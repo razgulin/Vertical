@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Vertical — Built by traders, for the climb</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+:root{
+  --bg:#F6F6F6; --surface:#FFFFFF; --surface-2:#F0F1F1;
+  --ink:#080D0F; --muted:#768083; --faint:#9AA0A2;
+  --line:rgba(8,13,15,.09); --line-2:rgba(8,13,15,.16);
+  --green:#08EF46; --green-ink:#0A8F33; --green-soft:rgba(8,239,70,.12);
+  --red:#FB301A; --red-soft:rgba(251,48,26,.10);
+  --r:12px; --r-lg:18px; --pill:68px;
+  --display:'Geist',sans-serif; --body:'Inter',sans-serif; --mono:'Geist Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.025em;line-height:1.1}
+::selection{background:var(--green);color:var(--ink)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--green-ink)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px}
+.mk{display:inline-block;width:16px;height:20px;color:currentColor}
+.mk svg{display:block;width:100%;height:100%}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-weight:500;font-size:15px;padding:13px 24px;border-radius:var(--pill);border:1px solid transparent;cursor:pointer;transition:.18s ease;white-space:nowrap}
+.btn-pri{background:var(--ink);color:#fff}
+.btn-pri:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(8,13,15,.18)}
+.btn-pri.ci{padding:6px 6px 6px 24px;gap:16px}
+.btn-pri .circ{width:38px;height:38px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.btn-pri .circ svg{width:15px;height:15px}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-2)}
+.btn-ghost:hover{background:var(--surface);border-color:var(--ink)}
+.btn-green{background:var(--green);color:var(--ink)}
+.btn-green:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(8,239,70,.28)}
+.btn-sm{padding:9px 18px;font-size:14px}
+
+/* banner */
+.banner{background:var(--ink);color:#fff;font-size:13.5px;text-align:center;padding:10px 16px;font-family:var(--body)}
+.banner b{font-family:var(--display);font-weight:600}
+.banner .cd{font-family:var(--mono);color:var(--green);font-weight:500}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:50;background:rgba(246,246,246,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:28px;height:66px;position:relative}
+.logo{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.03em;display:flex;align-items:center;gap:9px;color:var(--ink)}
+.nav-links{display:flex;gap:26px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+.nav-links a{font-size:14.5px;color:var(--muted);transition:.15s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.active{color:var(--ink);font-weight:500}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.nav-toggle{display:none;background:none;border:0;color:var(--ink);font-size:24px;cursor:pointer}
+
+/* hero */
+.hero{position:relative;padding:88px 0 0}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(680px 380px at 50% -6%,rgba(8,239,70,.10),transparent 68%);pointer-events:none}
+.hero-in{position:relative;text-align:center;max-width:780px;margin:0 auto}
+.hero .star{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-2);border-radius:99px;padding:6px 15px;margin-bottom:20px}
+.hero h1{font-size:clamp(36px,5.6vw,62px);font-weight:500;letter-spacing:-.03em}
+.hero h1 .grad{display:inline-flex;align-items:center;gap:.18em}
+.hero h1 .grad .mk{width:.62em;height:.78em;color:var(--green-ink);transform:translateY(.04em)}
+.hero p.sub{color:var(--muted);font-size:clamp(16px,2vw,19px);margin:22px auto 0;max-width:560px;font-family:var(--display);font-weight:400;letter-spacing:-.01em}
+.hero-photo{position:relative;max-width:1040px;margin:52px auto 0}
+.hero-photo image-slot{display:block;width:100%;height:auto;aspect-ratio:16/9}
+.hero .ticker{margin:-56px auto 0;position:relative;z-index:2;box-shadow:0 24px 48px rgba(8,13,15,.12)}
+
+/* ticker */
+.ticker{margin:48px auto 0;max-width:880px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.tk{background:var(--surface);padding:22px 16px;text-align:center}
+.tk .v{font-family:var(--display);font-size:clamp(24px,3vw,32px);font-weight:600;letter-spacing:-.03em}
+.tk .v.up{color:var(--green-ink)}
+.tk .l{font-size:12px;color:var(--muted);margin-top:7px;letter-spacing:.02em;font-family:var(--mono)}
+
+/* mission */
+.mission-card{background:var(--ink);border-radius:24px;padding:76px 48px;text-align:center;position:relative;overflow:hidden}
+.mission-card::before{content:"";position:absolute;inset:0;background:radial-gradient(560px 300px at 50% 0,rgba(8,239,70,.14),transparent 70%)}
+.mission-card>*{position:relative}
+.mission-card .eyebrow{color:var(--green)}
+.mission-st{font-family:var(--display);font-weight:500;letter-spacing:-.03em;line-height:1.15;font-size:clamp(26px,3.6vw,44px);color:#fff;max-width:840px;margin:22px auto 0;text-wrap:pretty}
+.mission-st em{font-style:normal;color:#9CA3A4}
+@media(max-width:560px){.mission-card{padding:52px 24px;border-radius:18px}}
+
+/* sections */
+section{padding:84px 0;position:relative}
+.sec-head{text-align:center;max-width:600px;margin:0 auto 48px}
+.sec-head h2{font-size:clamp(27px,3.6vw,40px);margin-top:14px;font-weight:500;letter-spacing:-.03em}
+.sec-head p{color:var(--muted);margin-top:14px}
+
+/* film — video presentation */
+.film{position:relative;max-width:1040px;margin:0 auto;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:var(--ink);cursor:pointer}
+.film::before{content:"";position:absolute;inset:0;background:radial-gradient(640px 360px at 50% 0,rgba(8,239,70,.14),transparent 70%),repeating-linear-gradient(135deg,rgba(255,255,255,.028) 0 12px,transparent 12px 24px)}
+.film .ph-tag{position:absolute;top:22px;left:22px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:#B9BEBF;text-transform:uppercase;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:99px;padding:8px 15px}
+.film .dur{position:absolute;top:22px;right:22px;font-family:var(--mono);font-size:12px;color:#fff;background:rgba(255,255,255,.1);border-radius:99px;padding:7px 13px}
+.film-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center}
+.film-play{width:84px;height:84px;border-radius:50%;background:var(--green);border:0;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s ease;box-shadow:0 0 0 0 rgba(8,239,70,.4)}
+.film:hover .film-play{transform:scale(1.08);box-shadow:0 0 0 14px rgba(8,239,70,.14)}
+.film-play svg{width:28px;height:28px;margin-left:4px}
+.film-title{font-family:var(--display);font-weight:500;font-size:clamp(19px,2.4vw,25px);letter-spacing:-.02em;color:#fff}
+.film-title small{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:#9CA3A4;margin-top:9px;text-transform:uppercase}
+.film-foot{position:absolute;left:0;right:0;bottom:0;padding:18px 24px;display:flex;align-items:center;gap:14px;background:linear-gradient(to top,rgba(8,13,15,.85),transparent)}
+.film-foot .fbar{flex:1;height:4px;border-radius:3px;background:rgba(255,255,255,.16);overflow:hidden}
+.film-foot .fbar i{display:block;height:100%;width:14%;background:var(--green);border-radius:3px}
+.film-foot span{font-family:var(--mono);font-size:12px;color:#B9BEBF}
+
+/* story */
+.about-top{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start;margin-bottom:0}
+.about-top h2{font-size:clamp(28px,3.6vw,42px);font-weight:500;letter-spacing:-.03em;max-width:9em;line-height:1.05}
+.about-top h2 .eyebrow{display:block;margin-bottom:16px}
+.about-intro p{color:var(--muted);font-size:15.5px;line-height:1.6}
+.about-intro p+p{margin-top:16px}
+.backers{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.backer{border:1px solid var(--line);border-radius:var(--r);padding:14px 18px;background:var(--surface)}
+.backer .k{font-size:11px;color:var(--muted);font-family:var(--mono);letter-spacing:.04em}
+.backer .b{font-family:var(--display);font-weight:600;font-size:17px;margin-top:4px}
+
+/* values */
+.vdiff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
+.vcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;text-align:left}
+.vcard .n{font-family:var(--mono);font-size:12px;color:var(--green-ink);margin-bottom:16px;display:block}
+.vcard h3{font-size:19px;font-weight:600;margin-bottom:11px;letter-spacing:-.02em;line-height:1.15}
+.vcard p{color:var(--muted);font-size:14px;line-height:1.5}
+
+/* team */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tmc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column}
+.tmc-photo{position:relative;aspect-ratio:1/.92;background:var(--surface-2);background-image:repeating-linear-gradient(135deg,rgba(8,13,15,.045) 0 12px,transparent 12px 24px);display:flex;align-items:flex-end;justify-content:center;padding:18px}
+.tmc-photo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(to top,var(--surface),transparent)}
+.tmc-photo span{position:relative;z-index:1;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--faint);text-transform:uppercase;border:1px solid var(--line);border-radius:99px;padding:6px 13px;background:var(--surface)}
+.tmc-info{padding:20px 24px 26px}
+.tmc-row{display:flex;align-items:center;gap:12px}
+.tmc-name{font-family:var(--display);font-weight:600;font-size:21px;letter-spacing:-.02em;color:var(--ink);line-height:1.1}
+.tmc-role{margin-left:auto;flex-shrink:0;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:99px;padding:6px 14px}
+.tmc-bio{color:var(--muted);font-size:14.5px;line-height:1.5;margin-top:14px}
+.tmc-social{display:flex;gap:8px;margin-top:18px}
+.tmc-social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;border:1px solid var(--line);color:var(--muted);transition:.15s}
+.tmc-social a svg{width:15px;height:15px}
+.tmc-social a:hover{color:var(--ink);border-color:var(--line-2);background:rgba(8,13,15,.03)}
+
+/* powered by */
+.powered{margin-top:64px;display:flex;flex-direction:column;align-items:center;gap:26px}
+.powered .sep{width:100%;max-width:880px;height:1px;background:var(--line)}
+.powered .row{display:flex;align-items:center;justify-content:center;gap:clamp(24px,5vw,52px);flex-wrap:wrap}
+.powered .row img{height:24px;width:auto;opacity:.78;transition:opacity .15s}
+.powered .row img:hover{opacity:1}
+.powered .row .wm{font-family:var(--display);font-weight:600;font-size:21px;letter-spacing:-.02em;color:var(--ink);opacity:.78;transition:opacity .15s}
+.powered .row .wm:hover{opacity:1}
+
+/* final cta */
+.final{text-align:center}
+.final-card{background:var(--ink);border-radius:24px;padding:64px 32px;position:relative;overflow:hidden}
+.final-card::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 280px at 50% 0,rgba(8,239,70,.16),transparent 70%)}
+.final-card>*{position:relative}
+.final-card h2{font-size:clamp(28px,4vw,44px);color:#fff;font-weight:500;letter-spacing:-.03em}
+.final-card p{color:#B9BEBF;margin:16px auto 32px;max-width:440px}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:56px 0 40px;background:var(--surface)}
+.foot-addr{color:var(--muted);font-size:13px;line-height:1.6}
+.foot-addr b{color:var(--ink);font-weight:600}
+.foot-legal{margin-top:28px;padding-top:24px;border-top:1px solid var(--line);color:var(--faint);font-size:12.5px;line-height:1.65}
+.foot-word{margin-top:44px;line-height:0}
+.foot-word svg{display:block;width:100%;height:auto;color:var(--ink)}
+.foot-legal p{margin:0 0 10px}
+.foot-legal p:last-child{margin-bottom:0}
+.foot-legal b{color:var(--muted);font-weight:600}
+.foot-social{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:40px}
+.foot-social .logo{padding-top:2px}
+.foot-social .logo .mk{width:20px;height:25px}
+.foot-nav{display:flex;gap:64px}
+.foot-social-links{display:flex;align-items:center;gap:10px;padding-top:2px}
+.foot-social-links a{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);color:var(--muted);transition:.15s}
+.foot-social-links a svg{width:19px;height:19px}
+.foot-social-links a:hover{color:var(--ink);border-color:var(--line-2);background:rgba(8,13,15,.03)}
+.foot-nav h4{font-family:var(--display);font-size:13px;color:var(--ink);letter-spacing:.02em;margin-bottom:16px;font-weight:600}
+.foot-nav a{display:block;color:var(--muted);font-size:14px;padding:5px 0;transition:.15s}
+.foot-nav a:hover{color:var(--ink)}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-top:44px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .team-grid{grid-template-columns:1fr}
+  .vdiff-grid{grid-template-columns:1fr 1fr}
+  .about-top{grid-template-columns:1fr;align-items:start;gap:24px}
+  .nav-links{display:none}
+  .nav-toggle{display:block}
+  .foot-nav{gap:36px}
+}
+@media (max-width:560px){
+  .ticker{grid-template-columns:repeat(2,1fr)}
+  .vdiff-grid{grid-template-columns:1fr}
+  .film{border-radius:18px}
+  .film-play{width:64px;height:64px}
+  section{padding:60px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none;transition:none}
+  .btn:hover{transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="banner" role="status">
+  <b>Launch offer</b> — 20% off all account sizes · ends in <span class="cd" id="countdown">--d --h --m --s</span>
+</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="vertical-prop-homepage.html" class="logo"><span class="mk"><svg viewBox="0 0 167.529 212.96" fill="none"><path d="M 167.529 79.505 L 167.528 79.505 L 167.528 84.719 C 150.688 84.719 134.012 88.036 118.453 94.48 C 102.894 100.925 88.757 110.372 76.849 122.28 C 64.94 134.189 55.494 148.326 49.049 163.885 C 42.604 179.443 39.287 196.119 39.287 212.96 L 0 212.96 C 0 190.96 4.333 169.175 12.752 148.85 C 21.171 128.524 33.512 110.056 49.068 94.5 C 64.625 78.944 83.093 66.603 103.418 58.184 C 112.243 54.528 121.343 51.643 130.616 49.549 L 130.616 39.753 L 0 39.753 L 0 0 L 167.529 0 L 167.529 79.505 Z M 167.529 136.295 L 130.616 136.295 L 130.616 95.406 C 143.344 90.715 153.963 89.493 167.529 89.493 L 167.529 136.295 Z" fill="currentColor"></path></svg></span>Vertical</a>
+    <nav class="nav-links">
+      <a href="about.html" class="active">About</a>
+      <a href="affiliates.html">Affiliates</a>
+      <a href="faq.html" style="display:inline-flex;align-items:center;gap:4px">FAQ<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8"/></svg></a>
+    </nav>
+    <div class="nav-right">
+      <a href="vertical-prop-homepage.html#pricing" class="btn btn-pri btn-sm">Get Funded</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menu">≡</button>
+  </div>
+</header>
+
+<section class="hero" data-screen-label="About hero">
+  <div class="wrap hero-in">
+    <span class="star">About Vertical</span>
+    <h1>The prop firm<br><span class="grad"><span class="mk"><svg viewBox="0 0 167.529 212.96" fill="none"><path d="M 167.529 79.505 L 167.528 79.505 L 167.528 84.719 C 150.688 84.719 134.012 88.036 118.453 94.48 C 102.894 100.925 88.757 110.372 76.849 122.28 C 64.94 134.189 55.494 148.326 49.049 163.885 C 42.604 179.443 39.287 196.119 39.287 212.96 L 0 212.96 C 0 190.96 4.333 169.175 12.752 148.85 C 21.171 128.524 33.512 110.056 49.068 94.5 C 64.625 78.944 83.093 66.603 103.418 58.184 C 112.243 54.528 121.343 51.643 130.616 49.549 L 130.616 39.753 L 0 39.753 L 0 0 L 167.529 0 L 167.529 79.505 Z M 167.529 136.295 L 130.616 136.295 L 130.616 95.406 C 143.344 90.715 153.963 89.493 167.529 89.493 L 167.529 136.295 Z" fill="currentColor"></path></svg></span>we always wanted</span></h1>
+    <p class="sub">Ex-bank and crypto-native traders, building the firm we wished existed: fixed rules, real liquidity, payouts that arrive.</p>
+  </div>
+  <div class="wrap">
+    <div class="hero-photo">
+      <image-slot id="about-hero-photo" shape="rounded" radius="24" placeholder="team / company photo" src="../assets/team-group.png"></image-slot>
+    </div>
+    <div class="ticker" aria-label="Vertical in numbers">
+      <div class="tk"><div class="v up">$2.4M+</div><div class="l">Paid out to traders</div></div>
+      <div class="tk"><div class="v">1,180</div><div class="l">Funded traders</div></div>
+      <div class="tk"><div class="v">2h 51m</div><div class="l">Avg. time to payout</div></div>
+      <div class="tk"><div class="v">90%</div><div class="l">Max profit split</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="mission" data-screen-label="Our mission">
+  <div class="wrap">
+    <div class="mission-card reveal">
+      <span class="eyebrow">Our mission</span>
+      <p class="mission-st">Make real trading capital accessible to any disciplined trader — <em>with fair rules, public numbers, and payouts that arrive.</em></p>
+    </div>
+  </div>
+</section>
+
+<section id="film" data-screen-label="Company film">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Inside Vertical</span>
+      <h2>Who we are, in 90 seconds</h2>
+      <p>The team, the platform, and why we publish every number we have.</p>
+    </div>
+    <div class="film reveal" role="button" tabindex="0" aria-label="Play the Vertical company film">
+      <span class="ph-tag">company film — drop video here</span>
+      <span class="dur">1:32</span>
+      <div class="film-center">
+        <button class="film-play" type="button" aria-hidden="true" tabindex="-1"><svg viewBox="0 0 24 24" fill="#080D0F"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+        <div class="film-title">Built for the climb<small>Vertical — company presentation</small></div>
+      </div>
+      <div class="film-foot"><span>0:13</span><div class="fbar"><i></i></div><span>1:32</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="story" style="padding-top:0" data-screen-label="Our story">
+  <div class="wrap">
+    <div class="about-top reveal">
+      <h2><span class="eyebrow">Our story</span>Built by traders, backed by the right people</h2>
+      <div class="about-intro">
+        <p>Vertical was started by ex-Société Générale and crypto-native traders who kept running into the same wall: prop firms designed for traders to fail. Moving targets, trailing drawdowns, payout games buried in the fine print.</p>
+        <p>So we built the firm we always wanted to trade for. Fixed rules that never change mid-challenge, tier-1 liquidity through OKX, and USDT payouts that land in hours — with our revenue, payouts, and pass rates published live for anyone to check.</p>
+        <div class="backers">
+          <div class="backer"><div class="k">Liquidity partner</div><div class="b">OKX</div></div>
+          <div class="backer"><div class="k">Lead investor</div><div class="b">WarburgAI</div></div>
+          <div class="backer"><div class="k">Headquarters</div><div class="b">Dover, Delaware</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="vdiff-grid reveal" aria-label="What we stand for">
+      <div class="vcard">
+        <span class="n">01</span>
+        <h3>Radical transparency</h3>
+        <p>Revenue, payouts and pass rates, published live. If we won't show a number, we shouldn't ask for your trust.</p>
+      </div>
+      <div class="vcard">
+        <span class="n">02</span>
+        <h3>Traders first</h3>
+        <p>Static drawdowns, no time limits, no minimum days. Rules are fixed the day you start — and stay fixed.</p>
+      </div>
+      <div class="vcard">
+        <span class="n">03</span>
+        <h3>Real infrastructure</h3>
+        <p>A platform built from scratch for crypto, executing on OKX tier-1 liquidity. No repackaged broker feeds.</p>
+      </div>
+      <div class="vcard">
+        <span class="n">04</span>
+        <h3>Paid, fast</h3>
+        <p>Up to 90% profit split, on-demand payouts in USDT. Average time from request to wallet: under 3 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="team" data-screen-label="Team">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The team</span>
+      <h2>The people behind Vertical</h2>
+      <p>A small team that has traded, built, and raised — now doing all three at once.</p>
+    </div>
+    <div class="team-grid reveal">
+      <div class="tmc">
+        <div class="tmc-photo"><span>Ayman — headshot</span></div>
+        <div class="tmc-info">
+          <div class="tmc-row"><span class="tmc-name">Ayman Berriga</span><span class="tmc-role">CEO</span></div>
+          <p class="tmc-bio">Marketing expert for 30+ companies. Millions raised. Ex Hyperswap, Keenest.</p>
+          <div class="tmc-social">
+            <a href="#" aria-label="Ayman on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z"></path></svg></a>
+            <a href="#" aria-label="Ayman on X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"></path></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="tmc">
+        <div class="tmc-photo"><span>Sacha — headshot</span></div>
+        <div class="tmc-info">
+          <div class="tmc-row"><span class="tmc-name">Sacha Navette</span><span class="tmc-role">CSO</span></div>
+          <p class="tmc-bio">9 years Crypto Trader. Ex FX trader at Société Générale.</p>
+          <div class="tmc-social">
+            <a href="#" aria-label="Sacha on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z"></path></svg></a>
+            <a href="#" aria-label="Sacha on X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"></path></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="tmc">
+        <div class="tmc-photo"><span>Lancelot — headshot</span></div>
+        <div class="tmc-info">
+          <div class="tmc-row"><span class="tmc-name">Lancelot de Briey</span><span class="tmc-role">CTO</span></div>
+          <p class="tmc-bio">10+ years Full Stack Engineer &amp; Research. WarburgAI founder, serial entrepreneur.</p>
+          <div class="tmc-social">
+            <a href="#" aria-label="Lancelot on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z"></path></svg></a>
+            <a href="#" aria-label="Lancelot on X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"></path></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="powered" aria-label="Partners">
+      <div class="sep"></div>
+      <div class="row">
+        <span class="wm">OKX</span>
+        <span class="wm">WarburgAI</span>
+        <img src="../assets/logo-sumsub.png" alt="Sumsub">
+        <span class="wm">Match-Trader</span>
+        <img src="../assets/logo-confirmo.png" alt="Confirmo">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final" style="padding-top:0" data-screen-label="Final CTA">
+  <div class="wrap">
+    <div class="final-card reveal">
+      <h2>Trade with us</h2>
+      <p>Join 1,180 traders trading real capital. Your evaluation account is live in minutes.</p>
+      <a href="vertical-prop-homepage.html#pricing" class="btn btn-green">Start your ascent — from $119</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-social">
+      <a href="vertical-prop-homepage.html" class="logo"><span class="mk"><svg viewBox="0 0 167.529 212.96" fill="none"><path d="M 167.529 79.505 L 167.528 79.505 L 167.528 84.719 C 150.688 84.719 134.012 88.036 118.453 94.48 C 102.894 100.925 88.757 110.372 76.849 122.28 C 64.94 134.189 55.494 148.326 49.049 163.885 C 42.604 179.443 39.287 196.119 39.287 212.96 L 0 212.96 C 0 190.96 4.333 169.175 12.752 148.85 C 21.171 128.524 33.512 110.056 49.068 94.5 C 64.625 78.944 83.093 66.603 103.418 58.184 C 112.243 54.528 121.343 51.643 130.616 49.549 L 130.616 39.753 L 0 39.753 L 0 0 L 167.529 0 L 167.529 79.505 Z M 167.529 136.295 L 130.616 136.295 L 130.616 95.406 C 143.344 90.715 153.963 89.493 167.529 89.493 L 167.529 136.295 Z" fill="currentColor"></path></svg></span>Vertical</a>
+      <div class="foot-nav">
+        <div><h4>Resources</h4><a href="about.html">About</a><a href="affiliates.html">Affiliates</a><a href="faq.html" style="display:inline-flex;align-items:center;gap:4px">FAQ<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8"/></svg></a><a href="#">Contact Support</a></div>
+        <div><h4>Legal</h4><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a><a href="#">Risk Warning</a></div>
+      </div>
+      <div class="foot-social-links">
+        <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"></path></svg></a>
+        <a href="#" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.369A19.79 19.79 0 0 0 15.432 2.86a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.249a18.27 18.27 0 0 0-5.487 0 12.6 12.6 0 0 0-.617-1.25.077.077 0 0 0-.079-.036A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.2 14.2 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.009c.12.099.245.198.372.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.056c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028ZM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.211 0 2.176 1.096 2.157 2.42 0 1.332-.955 2.418-2.157 2.418Zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.332-.946 2.418-2.157 2.418Z"></path></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z"></path></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069ZM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0Zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881Z"></path></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814ZM9.545 15.568V8.432L15.818 12l-6.273 3.568Z"></path></svg></a>
+        <a href="#" aria-label="Twitch"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"></path></svg></a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div class="foot-addr">© <span id="year">2026</span> Vertical LLC. All rights reserved.<br>8 The Green, Suite R, Dover, Delaware 19901</div>
+      <div class="foot-addr">Backed by <b>Warburg AI</b></div>
+    </div>
+    <div class="foot-legal">
+      <p><b style="color: rgb(0, 0, 0)">Risk Warning:</b></p>
+      <p>The content available on this platform serves exclusively educational purposes in relation to trading on financial markets and should not be interpreted as specific investment advice, business guidance, trading opportunity evaluation, or any comparable recommendation concerning the trading of financial instruments. Vertical operates solely as a provider of simulated trading environments and educational resources for traders. Our platform offers virtual trading challenges across perpetuals, and CFDs. We do not function as a brokerage service and do not process any client deposits. This platform is not intended for use by individuals residing in jurisdictions where access or usage would violate applicable local regulations.</p>
+      <p>The technical infrastructure supporting Vertical's trading platforms and market data feeds is supplied by third-party liquidity providers.</p>
+    </div>
+    <div class="foot-word"><svg viewBox="0 0 1200 232" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><g transform="translate(0,24) scale(0.7607)" fill="currentColor"><path d="M 167.529 79.505 L 167.528 79.505 L 167.528 84.719 C 150.688 84.719 134.012 88.036 118.453 94.48 C 102.894 100.925 88.757 110.372 76.849 122.28 C 64.94 134.189 55.494 148.326 49.049 163.885 C 42.604 179.443 39.287 196.119 39.287 212.96 L 0 212.96 C 0 190.96 4.333 169.175 12.752 148.85 C 21.171 128.524 33.512 110.056 49.068 94.5 C 64.625 78.944 83.093 66.603 103.418 58.184 C 112.243 54.528 121.343 51.643 130.616 49.549 L 130.616 39.753 L 0 39.753 L 0 0 L 167.529 0 L 167.529 79.505 Z M 167.529 136.295 L 130.616 136.295 L 130.616 95.406 C 143.344 90.715 153.963 89.493 167.529 89.493 L 167.529 136.295 Z"></path></g><text x="160" y="186" textLength="1040" lengthAdjust="spacingAndGlyphs" font-family="Geist,sans-serif" font-weight="600" font-size="232" letter-spacing="-10" fill="currentColor">Vertical</text></svg></div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+(function(){
+  var target = new Date().getTime() + (4*24+12)*3600*1000;
+  var el = document.getElementById('countdown');
+  function tick(){
+    var d = target - Date.now(); if(d<0) d=0;
+    var dd=Math.floor(d/86400000), hh=Math.floor(d%86400000/3600000),
+        mm=Math.floor(d%3600000/60000), ss=Math.floor(d%60000/1000);
+    el.textContent = dd+'d '+hh+'h '+mm+'m '+ss+'s';
+  }
+  tick(); setInterval(tick,1000);
+})();
+
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(n){io.observe(n)});
+}else{
+  document.querySelectorAll('.reveal').forEach(function(n){n.classList.add('in')});
+}
+</script>
+</body>
+</html>
